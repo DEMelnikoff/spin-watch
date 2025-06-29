@@ -117,18 +117,19 @@ const exp = (function() {
 
     // define each wedge
     let wedges = {
-      one:   { color: "#DF1F1F", label: "1" },
-      two:   { color: "#DF7F1F", label: "2" },
-      three: { color: "#DFDF1F", label: "3" },
-      four:  { color: "#7FDF1F", label: "4" },
-      five:  { color: "#1FDF1F", label: "5" },
-      six:   { color: "#1FDF7F", label: "6" },
-      seven: { color: "#1FDFDF", label: "7" },
-      eight: { color: "#1F7FDF", label: "8" },
-      nine:  { color: "#1F1FDF", label: "9" },
-      ten:   { color: "#7F1FDF", label: "10" },
-      eleven:{ color: "#DF1FDF", label: "11" },
-      twelve:{ color: "#DF1F7F", label: "12" }
+        one:   { color: "#D82626", label: "1" },
+        two:   { color: "#D87826", label: "2" },
+        three: { color: "#D8CB26", label: "3" },
+        four:  { color: "#94D826", label: "4" },
+        five:  { color: "#41D826", label: "5" },
+        six:   { color: "#26D85D", label: "6" },
+        seven: { color: "#26D8AF", label: "7" },
+        eight: { color: "#26AFD8", label: "8" },
+        nine:  { color: "#265DD8", label: "9" },
+        ten:   { color: "#4126D8", label: "10" },
+        eleven:{ color: "#9426D8", label: "11" },
+        twelve:{ color: "#D826CB", label: "12" }
+        twelve:{ color: "#D82678", label: "13" }
     };
 
     function shuffleColorsInPlace(wedgesObj) {
@@ -215,7 +216,7 @@ const exp = (function() {
     const happinessMeasure = {
         type: jsPsychSurveyLikert,
         questions: [
-            {prompt: `How happy are you right now?`,
+            {prompt: `How <b>happy</b> are you right now?`,
             name: `happiness`,
             labels: ['0<br>Very unhappy', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10<br>Very happy']},
         ],
