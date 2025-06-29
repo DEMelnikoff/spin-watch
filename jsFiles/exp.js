@@ -127,9 +127,9 @@ const exp = (function() {
         eight: { color: "#26AFD8", label: "8" },
         nine:  { color: "#265DD8", label: "9" },
         ten:   { color: "#4126D8", label: "10" },
-        eleven:{ color: "#9426D8", label: "11" },
-        twelve:{ color: "#D826CB", label: "12" }
-        twelve:{ color: "#D82678", label: "13" }
+        eleven: { color: "#9426D8", label: "11" },
+        twelve: { color: "#D826CB", label: "12" },
+        thirteen: { color: "#D82678", label: "13" }
     };
 
     function shuffleColorsInPlace(wedgesObj) {
