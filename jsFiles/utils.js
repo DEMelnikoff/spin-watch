@@ -209,7 +209,7 @@ const createSpinner = function(canvas, spinnerData, score, sectors, lose, intera
           currentAngle = oldAngle;
           let sector = sectors[getIndex(currentAngle)];
           spinnerData.outcomes.push(parseFloat(sector.label));
-          drawSector(sectors, getIndex());
+          drawSector(sectors, getIndex(currentAngle));
           updateScore(parseFloat(sector.label), sector.color);
           if (!interactive && spinnerData.outcomes.length < 5) { setTimeout(startAutoSpin, 1000) };
         };
@@ -304,7 +304,7 @@ const createSpinner = function(canvas, spinnerData, score, sectors, lose, intera
       ctx.save();
       // COLOR
       ctx.beginPath();
-      ctx.fillStyle = (isSpinning && i == sector) ? "black" : sectors[i].color;
+      ctx.fillStyle = sectors[i].color;
       ctx.moveTo(rad, rad);
       ctx.arc(rad, rad, rad, ang, ang + arc);
       ctx.lineTo(rad, rad);

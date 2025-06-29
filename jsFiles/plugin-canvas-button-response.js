@@ -77,7 +77,7 @@ var jsPsychCanvasButtonResponse = (function (jspsych) {
           // create canvas
           var html = 
               '<div class="score-board">' +
-                '<div class="score-board-title">Total Score</div>' +
+                '<div class="score-board-title">Total Tokens</div>' +
                 '<div class="score-board-score" id="score" >' + trial.score + '</div>' +
               '</div>' +
               '<div id="jspsych-canvas-button-response-stimulus">' +

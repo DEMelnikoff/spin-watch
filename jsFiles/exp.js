@@ -5,6 +5,16 @@ const exp = (function() {
 
     var p = {};
 
+    const condition = Math.floor(Math.random() * 2);
+
+    const play = ["play", "watch"][condition];
+
+    const playBool = [true, false][condition];
+
+    jsPsych.data.addProperties({
+        condition: play,
+    });
+
 
    /*
     *
@@ -13,24 +23,62 @@ const exp = (function() {
     */
 
     const html = {
-        intro: [
+        intro_play: [
             `<div class='parent'>
-                <p><strong>Welcome to Spin the Wheel!</strong></p>
-                <p>In Spin the Wheel, you'll spin a series of prize wheels.</p>
-                <p>Each time you spin a prize wheel, you'll earn points.
-                <br>The number of points you earn depends on where the wheel lands.</p>
-                <p>Your goal is to earn as many points as possible by spinning the prize wheels!</p>
+                <p><strong>Welcome to Wheel of Fortune!</strong></p>
+                <p>In Wheel of Fortune, you'll spin a series of prize wheels.</p>
+                <p>Each time you spin a prize wheel, you'll earn tokens.
+                <br>The number of tokens you earn depends on where the wheel lands.</p>
+                <p>The goal is to earn as many tokens as possible!</p>
+            </div>`,
+
+            `<div class='parent'>
+                <p>The more tokens you earn, the better your chances of winning a <strong>$100.00 bonus prize</strong>.</p>
+                <p>Specifically, the tokens you earn will be entered into a lottery, and if one of your tokens is drawn, you'll win $100.00. 
+                To maximize your chances of winning a $100.00 bonus, you'll need to earn as many tokens as possible.</p>
             </div>`,
 
             `<div class='parent'>
                 <p>To spin a prize wheel, just grab it with your cursor and give it a spin!
                 <br>Watch the animation below to see how it's done.</p>
-                <img src="./img/spinGif.gif" style="width:60%; height:60%">
+                <img src="./img/spin-${play}-gif.gif" style="width:60%; height:60%">
             </div>`,
 
             `<div class='parent'>
-                <p>Throughout Spin the Wheel, you'll answer questions about your feelings.</p>
-                <p>Specifically, you'll report how <strong>immersed and engaged</strong> you feel while spinning each wheel,<br>
+                <p>Throughout Wheel of Fortune, you'll answer questions about your feelings.</p>
+                <p>Specifically, you'll report how <strong>immersed and engaged</strong> you feel while spinning each wheel,
+                as well as how <strong>happy</strong> you currently feel.</p>
+            </div>`,      
+
+            `<div class='parent'>
+                <p>You're ready to start playing Wheel of Fortune!</p>
+                <p>Continue to the next screen to begin.</p>
+            </div>`,      
+        ],
+
+        intro_watch: [
+            `<div class='parent'>
+                <p><strong>Welcome to Wheel of Fortune!</strong></p>
+                <p>In Wheel of Fortune, you'll observe a series of spinning prize wheels.</p>
+                <p>Each time a prize wheel spins, you'll earn tokens.
+                <br>The number of tokens you earn depends on where the wheel lands.</p>
+                <p>The goal is to earn as many tokens as possible!</p>
+            </div>`,
+
+            `<div class='parent'>
+                <p>The more tokens you earn, the better your chances of winning a <b>$100.00 bonus prize</b>.</p>
+                <p>Specifically, the tokens you earn will be entered into a lottery, and if one of your tokens is drawn, you'll win $100.00. To maximize your chances of winning a $100.00 bonus, you'll need to earn as many tokens as possible.</p>
+            </div>`,
+
+            `<div class='parent'>
+                <p>Each prize wheel spins automatically.
+                <br>Watch the animation below to see an example.</p>
+                <img src="./img/spin-${play}-gif.gif" style="width:60%; height:60%">
+            </div>`,
+
+            `<div class='parent'>
+                <p>Throughout Wheel of Fortune, you'll answer questions about your feelings.</p>
+                <p>Specifically, you'll report how <strong>immersed and engaged</strong> you feel during each round of Wheel of Fortune,
                 as well as how <strong>happy</strong> you currently feel.</p>
             </div>`,      
 
@@ -56,7 +104,7 @@ const exp = (function() {
 
     p.intro = {
         type: jsPsychInstructions,
-        pages: html.intro,
+        pages: [html.intro_play, html.intro_watch][condition],
         show_clickable_nav: true,
         post_trial_gap: 500,
     };
@@ -93,56 +141,32 @@ const exp = (function() {
     // define each wheel
     const wheels = [
 
-        /*  1 1 1 1
-            3 4 5 6    ev = 4.5; v = 1.67
-            7 8 9 10   ev = 8.5; v = 1.67
-            1 3 6 8    ev = 4.5; v = 9.67
-            5 7 10 12  ev = 8.5; v = 9.67
-        */
             {sectors: [ wedges.three, wedges.four, wedges.five, wedges.six ], ev: 4.5, var: 1.67, arrangement: 1111},
             {sectors: [ wedges.seven, wedges.eight, wedges.nine, wedges.ten ], ev: 8.5, var: 1.67, arrangement: 1111},
             {sectors: [ wedges.one, wedges.three, wedges.six, wedges.eight ], ev: 4.5, var: 9.67, arrangement: 1111},
             {sectors: [ wedges.five, wedges.seven, wedges.ten, wedges.twelve ], ev: 8.5, var: 9.67, arrangement: 1111},
 
-        /*  2 1 1 
-            3 3 5 7     ev = 4.5; v = 2.25
-            7 7 9 11    ev = 8.5; v = 2.25
-            2 2 6 8     ev = 4.5; v = 9
-            6 6 10 12    ev = 8.5; v = 9
-        */
             {sectors: [ wedges.three, wedges.three, wedges.five, wedges.seven ], ev: 4.5, var: 3.67, arrangement: 211},
             {sectors: [ wedges.seven, wedges.seven, wedges.nine, wedges.eleven ], ev: 8.5, var: 3.67, arrangement: 211},
             {sectors: [ wedges.two, wedges.two, wedges.six, wedges.eight ], ev: 4.5, var: 9, arrangement: 211},
             {sectors: [ wedges.six, wedges.six, wedges.ten, wedges.twelve ], ev: 8.5, var: 9, arrangement: 211},
 
-        /*  2 2
-            3 3 6 6    ev = 4.5; v = 3
-            7 7 10 10  ev = 8.5; v = 3
-            2 2 7 7    ev = 4.5; v = 8.33
-            6 6 11 11  ev = 4.5; v = 8.33
-        */
+    
             {sectors: [ wedges.three, wedges.three, wedges.six, wedges.six ], ev: 4.5, var: 3, arrangement: 22},
+
+
             {sectors: [ wedges.seven, wedges.seven, wedges.ten, wedges.ten ], ev: 8.5, var: 3, arrangement: 22},
             {sectors: [ wedges.two, wedges.two, wedges.seven, wedges.seven ], ev: 4.5, var: 8.33, arrangement: 22},
             {sectors: [ wedges.six, wedges.six, wedges.eleven, wedges.eleven ], ev: 8.5, var: 8.33, arrangement: 22},
 
-        /*  3 1
-            4 4 4 6    ev = 4.5; v = 1
-            8 8 8 10   ev = 8.5; v = 1
-            3 3 3 9    ev = 4.5; v = 9
-            7 7 7 13   ev = 8.5; v = 9
-        */
             {sectors: [ wedges.four, wedges.four, wedges.four, wedges.six ], ev: 4.5, var: 1, arrangement: 31},
             {sectors: [ wedges.eight, wedges.eight, wedges.eight, wedges.ten ], ev: 8.5, var: 1, arrangement: 31},
             {sectors: [ wedges.three, wedges.three, wedges.three, wedges.nine ], ev: 4.5, var: 9, arrangement: 31},
             {sectors: [ wedges.seven, wedges.seven, wedges.seven, wedges.thirteen ], ev: 8.5, var: 9, arrangement: 31},
 
-        /*  4
-            5 5 5 5 5   ev = 5; v = 0
-            9 9 9 9 9   ev = 9; v = 0
-        */
             {sectors: [ wedges.four, wedges.four, wedges.four, wedges.four ], ev: 4, var: 0, arrangement: 4},
             {sectors: [ wedges.nine, wedges.nine, wedges.nine, wedges.nine ], ev: 9, var: 0, arrangement: 4},
+
         ];
 
     let scoreTracker = 0; // track current score
@@ -154,7 +178,7 @@ const exp = (function() {
         type: jsPsychCanvasButtonResponse,
         stimulus: function(c, spinnerData) {
             shuffleColorsInPlace(wedges);
-            createSpinner(c, spinnerData, scoreTracker, jsPsych.timelineVariable('sectors'), false, false);
+            createSpinner(c, spinnerData, scoreTracker, jsPsych.timelineVariable('sectors'), false, playBool);
         },
         canvas_size: [500, 500],
         score: function() {
