@@ -27,14 +27,13 @@ const exp = (function() {
             `<div class='parent'>
                 <p><strong>Welcome to Wheel of Fortune!</strong></p>
                 <p>In Wheel of Fortune, you'll spin a series of prize wheels.</p>
-                <p>Each time you spin a prize wheel, you'll earn tokens.
-                <br>The number of tokens you earn depends on where the wheel lands.</p>
-                <p>The goal is to earn as many tokens as possible!</p>
+                <p>Each time you spin a prize wheel, you'll earn tokens.</p>
+                <p>The number of tokens you earn depends on where the wheel lands.</p>
             </div>`,
 
             `<div class='parent'>
                 <p>The more tokens you earn, the better your chances of winning a <strong>$100.00 bonus prize</strong>.</p>
-                <p>Specifically, the tokens you earn will be entered into a lottery, and if one of your tokens is drawn, you'll win $100.00. 
+                <p>The tokens you earn will be entered into a lottery, and if one of your tokens is drawn, you'll win $100.00. 
                 To maximize your chances of winning a $100.00 bonus, you'll need to earn as many tokens as possible.</p>
             </div>`,
 
@@ -60,14 +59,13 @@ const exp = (function() {
             `<div class='parent'>
                 <p><strong>Welcome to Wheel of Fortune!</strong></p>
                 <p>In Wheel of Fortune, you'll observe a series of spinning prize wheels.</p>
-                <p>Each time a prize wheel spins, you'll earn tokens.
-                <br>The number of tokens you earn depends on where the wheel lands.</p>
-                <p>The goal is to earn as many tokens as possible!</p>
+                <p>Each time a prize wheel spins, you'll earn tokens.</p>
+                <p>The number of tokens you earn depends on where the wheel lands.</p>
             </div>`,
 
             `<div class='parent'>
                 <p>The more tokens you earn, the better your chances of winning a <b>$100.00 bonus prize</b>.</p>
-                <p>Specifically, the tokens you earn will be entered into a lottery, and if one of your tokens is drawn, you'll win $100.00. To maximize your chances of winning a $100.00 bonus, you'll need to earn as many tokens as possible.</p>
+                <p>The tokens you earn will be entered into a lottery, and if one of your tokens is drawn, you'll win $100.00. To maximize your chances of winning a $100.00 bonus, you'll need to earn as many tokens as possible.</p>
             </div>`,
 
             `<div class='parent'>
@@ -83,14 +81,14 @@ const exp = (function() {
             </div>`,      
 
             `<div class='parent'>
-                <p>You're ready to start playing Spin the Wheel!</p>
+                <p>You're ready to start playing Wheel of Fortune!</p>
                 <p>Continue to the next screen to begin.</p>
             </div>`,      
         ],
 
         postTask: [
             `<div class='parent'>
-                <p>Spin the Wheel is now complete!</p>
+                <p>Wheel of Fortune is now complete!</p>
                 <p>To finish this study, please continue to answer a few final questions.</p>
             </div>`
         ],
@@ -196,7 +194,7 @@ const exp = (function() {
     const flowMeasure = {
         type: jsPsychSurveyLikert,
         questions: [
-            {prompt: `During the last round of Spin the Wheel,<br>to what extent did you feel immersed and engaged in what you were doing?`,
+            {prompt: `How <b>immersed</b> and <b>engaged</b> did you feel in the last round of Wheel of Fortune?`,
             name: `flow`,
             labels: ['0<br>A little', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10<br>Extremely']},
         ],
