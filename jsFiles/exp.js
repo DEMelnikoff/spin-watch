@@ -214,8 +214,6 @@ const exp = (function() {
 
     const happinessMeasure = {
         type: jsPsychSurveyMultiChoice,
-        preamble: `<div class='parent' style='text-align: left; color: rgb(109, 112, 114)'>
-            <p><strong>Please answer the following questions.</strong></p></div>`,
         questions: [
             {
                 prompt: `How <b>happy</b> are you right now?`, 
