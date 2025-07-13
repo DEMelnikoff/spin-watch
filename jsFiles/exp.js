@@ -218,7 +218,7 @@ const exp = (function() {
             {
                 prompt: `How <b>happy</b> are you right now?`, 
                 name: `happiness`, 
-                options: ['10 = Very Unhappy', '9', '8', '7', '6', '5', '4', '3', '2', '1', '0 = Very Happy'],
+                options: ['10 (Very Happy)', '9', '8', '7', '6', '5', '4', '3', '2', '1', '0 (Very Unhappy)'],
             },
         ],
         scale_width: 500,
@@ -413,7 +413,7 @@ const exp = (function() {
     p.save_data = {
         type: jsPsychPipe,
         action: "save",
-        experiment_id: "cw61PbtCKmhq",
+        experiment_id: "kVuqVxE29uBQ",
         filename: filename,
         data_string: ()=>jsPsych.data.get().csv()
     };
