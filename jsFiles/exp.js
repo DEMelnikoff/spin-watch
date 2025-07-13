@@ -5,7 +5,7 @@ const exp = (function() {
 
     var p = {};
 
-    const condition = Math.floor(Math.random() * 2);
+    const condition = 0;
 
     const play = ["play", "watch"][condition];
 
@@ -212,18 +212,19 @@ const exp = (function() {
         }
     };
 
-    // trial: happiness DV
     const happinessMeasure = {
-        type: jsPsychSurveyLikert,
+        type: jsPsychSurveyMultiChoice,
+        preamble: `<div class='parent' style='text-align: left; color: rgb(109, 112, 114)'>
+            <p><strong>Please answer the following questions.</strong></p></div>`,
         questions: [
-            {prompt: `How <b>happy</b> are you right now?`,
-            name: `happiness`,
-            labels: ['0<br>Very unhappy', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10<br>Very happy']},
+            {
+                prompt: `How <b>happy</b> are you right now?`, 
+                name: `happiness`, 
+                options: ['0 = Very Unhappy', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10 = Very Happy'],
+            },
         ],
-        randomize_question_order: false,
-        scale_width: 600,
-        data: {ev: jsPsych.timelineVariable('ev'), var: jsPsych.timelineVariable('var'), arrangement: jsPsych.timelineVariable('arrangement')},
-        on_finish: function(data) {
+        scale_width: 500,
+        on_finish: (data) => {
             data.round = round;
             let scoreArray = jsPsych.data.get().select('score').values;
             let outcomesArray = jsPsych.data.get().select('outcomes').values;
@@ -231,7 +232,7 @@ const exp = (function() {
             data.outcomes = outcomesArray[outcomesArray.length - 2];
             saveSurveyData(data);
             round++;
-        }
+        },
     };
 
     // timeline: main task
@@ -414,7 +415,7 @@ const exp = (function() {
     p.save_data = {
         type: jsPsychPipe,
         action: "save",
-        experiment_id: "Et8XkAeDeaox",
+        experiment_id: "cw61PbtCKmhq",
         filename: filename,
         data_string: ()=>jsPsych.data.get().csv()
     };
