@@ -5,7 +5,7 @@ const exp = (function() {
 
     var p = {};
 
-    const condition = 0;
+    const condition = 1;
 
     const play = ["play", "watch"][condition];
 
@@ -69,8 +69,8 @@ const exp = (function() {
             </div>`,
 
             `<div class='parent'>
-                <p>Each prize wheel spins automatically.
-                <br>Watch the animation below to see an example.</p>
+                <p>Each prize wheel spins automatically. When it stops spinning, your earnings are revealed.</p>
+                <p>Watch the animation below to see an example.</p>
                 <img src="./img/spin-${play}-gif.gif" style="width:60%; height:60%">
             </div>`,
 
@@ -195,7 +195,7 @@ const exp = (function() {
     const flowMeasure = {
         type: jsPsychSurveyLikert,
         questions: [
-            {prompt: `How <b>immersed</b> and <b>engaged</b> did you feel in the last round of Wheel of Fortune?`,
+            {prompt: `During the last round of Wheel of Fortune,<br>how <b>immersed</b> and <b>engaged</b> did you feel in what you were watching?`,
             name: `flow`,
             labels: ['0<br>A little', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10<br>Extremely']},
         ],
@@ -413,7 +413,7 @@ const exp = (function() {
     p.save_data = {
         type: jsPsychPipe,
         action: "save",
-        experiment_id: "kVuqVxE29uBQ",
+        experiment_id: "lrmVyu0nL5X4",
         filename: filename,
         data_string: ()=>jsPsych.data.get().csv()
     };

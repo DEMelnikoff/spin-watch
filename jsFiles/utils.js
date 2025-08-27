@@ -209,9 +209,10 @@ const createSpinner = function(canvas, spinnerData, score, sectors, lose, intera
           currentAngle = oldAngle;
           let sector = sectors[getIndex(currentAngle)];
           spinnerData.outcomes.push(parseFloat(sector.label));
-          drawSector(sectors, getIndex(currentAngle));
-          updateScore(parseFloat(sector.label), sector.color);
-          if (!interactive && spinnerData.outcomes.length < 5) { setTimeout(startAutoSpin, 1000) };
+          setTimeout(() => {
+            drawSector(sectors, getIndex(currentAngle));
+            updateScore(parseFloat(sector.label), sector.color);
+          }, Math.random()*3000)
         };
       };
     };
@@ -230,7 +231,8 @@ const createSpinner = function(canvas, spinnerData, score, sectors, lose, intera
       isSpinning = false;
       drawSector(sectors, null);
       onWheel ? canvas.style.cursor = "grab" : canvas.style.cursor = "";
-    }, 1000);
+      if (!interactive && spinnerData.outcomes.length < 5) { setTimeout(startAutoSpin, 225) };
+    }, 2000);
   };
 
   const getIndex = (x) => {
@@ -304,7 +306,7 @@ const createSpinner = function(canvas, spinnerData, score, sectors, lose, intera
       ctx.save();
       // COLOR
       ctx.beginPath();
-      ctx.fillStyle = sectors[i].color;
+      ctx.fillStyle = (isSpinning) ? sectors[i].color : "grey" ;
       ctx.moveTo(rad, rad);
       ctx.arc(rad, rad, rad, ang, ang + arc);
       ctx.lineTo(rad, rad);
@@ -318,8 +320,8 @@ const createSpinner = function(canvas, spinnerData, score, sectors, lose, intera
       //ctx.rotate( (ang + arc / 2) + arc );
       ctx.textAlign = "center";
       ctx.fillStyle = "#fff";
-      if (isSpinning && i == sector) {
-        ctx.font = "bolder 90px sans-serif"
+      if (isSpinning) {
+        ctx.font = (i == sector) ? "bolder 90px sans-serif" : "bold 65px sans-serif";
         ctx.strokeStyle = 'black';
         ctx.lineWidth = 3;
         ctx.strokeText(sectors[i].label, 0, -140);
@@ -328,8 +330,8 @@ const createSpinner = function(canvas, spinnerData, score, sectors, lose, intera
         ctx.font = "bold 65px sans-serif"
         ctx.strokeStyle = 'black';
         ctx.lineWidth = 3;
-        ctx.strokeText(sectors[i].label, 0, -140);
-        ctx.fillText(sectors[i].label, 0, -140);
+        ctx.strokeText("?", 0, -140);
+        ctx.fillText("?", 0, -140);
       }
      // ctx.fillText(sector.label, rad - 80, 10);
      // textUnderline(ctx,sectors[i].label, 0, -135, "#fff", "50px", "center");
